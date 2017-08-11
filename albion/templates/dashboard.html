@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container text-center">
+	{% if character %}
+  <h3 class="text-center">{{character.name}}</h3>
+  <div id="role" class="text-center">
+    {% if character.role == "Tank" %}
+    <img src="{% static 'albion/img/shield.png' %}"></img>
+    {% elif character.role == "Ranged DPS"%}
+    <img src="{% static 'albion/img/ranged.png' %}"></img>
+    {% elif character.role == "Melee DPS" %}
+    <img src="{% static 'albion/img/melee.png' %}"></img>
+    {% elif character.role == "Healer" %}
+    <img src="{% static 'albion/img/healer.png' %}"></img>
+    {% else %}
+    Failed to find your role image.
+    {% endif %}
+    <br>
+    <h3>{{character.role}}</h3>
+	<hr>
+  <button class="btn btn-success" onclick="location.href='{% url 'craft_update' %}'">Add Craft</button>  
+  <br><br>
+  <button class="btn btn-warning" onclick="location.href='{% url 'character_update' %}'">Update Character</button>  
+  </div>
+	{% else %}
+  <div class="text-center">
+	<h3>You don't have a character.</h3>
+  <button class="btn btn-success" onclick="location.href='{% url 'character_add' %}'">Add Character</button>
+  </div>
+	{% endif %}
+</div>
+{% endblock %}

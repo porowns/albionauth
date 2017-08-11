@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">All</a></li>
+    <li><a data-toggle="tab" href="#menu1">Tank</a></li>
+    <li><a data-toggle="tab" href="#menu2">Healer</a></li>
+    <li><a data-toggle="tab" href="#menu3">DPS</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Last Login</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for character in characters %}
+					<tr>
+						<td>{{character.name}}</td>
+						<td>{{character.role}}</td>
+            <td>{{character.user.last_login}}</td>
+					</tr
+				{% endfor %}
+				<!-- Bottom Divider -->
+				<tr><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h4>Tank Count : {{tanks.count}}</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Crafting</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for character in tanks %}
+					<tr>
+						<td>{{character.name}}</td>
+						<td>{{character.role}}</td>
+            <td>{{character.discord}}</td>
+					</tr
+				{% endfor %}
+				<!-- Bottom Divider -->
+				<tr><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h4>Healer Count: {{healers.count}}</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Crafting</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for character in healers %}
+					<tr>
+						<td>{{character.name}}</td>
+						<td>{{character.role}}</td>
+            <td>{{character.discord}}</td>
+					</tr
+				{% endfor %}
+				<!-- Bottom Divider -->
+				<tr><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h4>DPS Count: {{dps.count}}</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>Crafting</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for character in dps %}
+					<tr>
+						<td>{{character.name}}</td>
+						<td>{{character.role}}</td>
+            <td>{{character.discord}}</td>
+					</tr
+				{% endfor %}
+				<!-- Bottom Divider -->
+				<tr><td></td><td></td><td></td></tr>
+				</tbody>
+			</table>
+    </div>
+  </div>
+</div>
+{% endblock %}

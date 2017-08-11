@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h2>Crafting</h2>
+  <p>This is the crafting database for the Krypted Gaming guild. Players can add their crafting skills in the dashboard, and others can view them here. If you don't see yourself here, add a craft from your dashboard. Tabs are for buildings, while blocks are for items.</p>
+  <ul class="nav nav-tabs">
+  {% for item in data %}
+  <li><a data-toggle="tab" href="#{{item.0}}">{{item.0}}</a></li>
+  {% endfor %}
+  </ul>
+
+  <form name="form" enctype="multipart/form-data" method="POST">{% csrf_token %}
+    <div class="tab-content">
+      <br>
+      {% for item in data %}
+        <div id="{{item.0}}" class="tab-pane fade in">
+          <!-- PANEL BASE -->
+          {% for list in item.1 %}
+          <label class="mr-sm2" for="{{list.0.id}}">{{list.0.item}}</label>
+          <select name="{{list.0.id}}" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="{{list.0.id}}">
+            {% if playercrafts != None %}
+            {% for pcraftitem in playercrafts %}
+            {% if pcraftitem.craft.id == list.0.id %}
+            <option selected>{{pcraftitem.tier}}</option>
+            {% endif %}
+            {%endfor%}
+            {%endif%}
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
+          <hr>
+          {% endfor %}
+          <!-- END PANEL -->
+        </div>
+      {% endfor %}
+    </div>
+    <h3>Warning : This will overwrite all of your crafts. Make sure it's correct.</h3>
+    <button type="submit" class="btn btn-success btn-fill">Save Changes</button>
+  </form>
+</div>
+{% endblock %}
