@@ -55,3 +55,17 @@ class CharacterForm(forms.Form):
                 raise forms.ValidationError(
                         "Discord name taken."
                         )
+
+class StaticForm(forms.Form):
+    name = forms.CharField(max_length=32, required=True)
+    description = forms.CharField(max_length=500, required=True)
+
+class StaticAddMemberForm(forms.Form):
+    member = forms.CharField(max_length=32, required=True)
+    def clean(self):
+        if AlbionCharacter.objects.filter(name=self.cleaned_data.get('member')).exists():
+            pass
+        else:
+            raise forms.ValidationError(
+                    "User does not exist."
+                    )

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Leader</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for static in statics %}
+      <tr>
+        <td><a href="{% url 'static_view' pk=static.pk %}">{{static.name}}</a></td>
+        <td>{{static.description}}</td>
+        <td>{{static.leader}}</td>
+      </tr
+    {% endfor %}
+    <!-- Bottom Divider -->
+    <tr><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

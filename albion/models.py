@@ -44,3 +44,13 @@ class PlayerCraft(models.Model):
 
     def __str__(self):
         return self.craft.item
+
+class Static(models.Model):
+    """
+    Confusing name, I know. A Static is equivilent to a group that doesn't change in Albion Online, and is just a
+    terminology.
+    """
+    name = models.CharField(max_length=32)
+    leader = models.ForeignKey("AlbionCharacter", on_delete=models.CASCADE, related_name="leader")
+    members = models.ManyToManyField("AlbionCharacter", blank=True, null=True)
+    description = models.CharField(max_length=500)

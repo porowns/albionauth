@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from models import AlbionCharacter, Craft, PlayerCraft
+from models import AlbionCharacter, Craft, PlayerCraft, Static
 
 @admin.register(AlbionCharacter)
 class AlbionCharacterAdmin(admin.ModelAdmin):
@@ -24,3 +24,6 @@ class AlbionPlayerCraftAdmin(admin.ModelAdmin):
     def get_username(self, playercraft):
         return playercraft.character.name
 
+@admin.register(Static)
+class AlbionStaticAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'leader')

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Static Groups</h1>
+  <p>These are groups of people who are consistently active, and have decided to form a static group of 5 players for <b>advanced content</b> (Hellgates, GvG). Static groups make it so that people play with the guys they want to play with, <b>and more people get experience with 5v5 content, which the game is based on.</b> Static groups will be the <b>key for successful GvG in our guild</b>, as well as resolving a lot of stress and tensions from zergs and
+  whatnot.</p>
+  <p>Static groups do not mean we won't do zerg guild content. This is just for specific activities. These players will gather, run dungeons, and more together.</p>
+  <li>Anybody can create a static group.</li>
+  <li>Static groups can only have one leader.</li>
+  <li>Static groups are still required to participate in guild content.</li>
+  <br>
+  <p>This will hopefully turn into a wonderful system that allows us to identify contributions to the guild, such as from an 'all gathering' static group, or our very best GvG team. Possibilities include allowing us to sponsor these groups with guild-funded gear, and more.</p>
+  <button onclick="location.href='{% url 'statics_add' %}'" class="btn btn-success btn-fill">Create a Group</button>
+  <button onclick="location.href='{% url 'statics_view' %}'" class="btn btn-primary btn-fill">View all Groups</button>
+</div>
+{% endblock %}
