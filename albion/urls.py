@@ -23,4 +23,5 @@ urlpatterns += [
     url(r'^staticgroup/(?P<pk>\d+)/$', views.static_view, name='static_view'),
     url(r'^staticgroup/(?P<pk>\d+)/edit/$', views.static_edit, name='static_edit'),
     url(r'^staticgroup/(?P<pk>\d+)/add-member/$', views.static_add_member, name='static_add_member'),
+    url(r'^staticgroup/(?P<pk>\d+)/remove-member/(?P<member>\d+)/$', views.static_remove_member, name='static_remove_member'),
     ]

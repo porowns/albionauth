@@ -247,6 +247,13 @@ def static_add_member(request, pk):
     context['form'] = form
     return render(request, 'groups/static_add_member.html', context)
 
+@login_required
+def static_remove_member(request, pk, member):
+    static = Static.objects.get(pk=pk)
+    member = AlbionCharacter.objects.get(pk=member)
+    static.members.remove(member)
+    static.save()
+    return redirect('static_view', pk=static.pk)
 
 @login_required
 def clear_playercrafts(character):

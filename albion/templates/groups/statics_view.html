@@ -12,7 +12,16 @@
     <tbody>
     {% for static in statics %}
       <tr>
-        <td><a href="{% url 'static_view' pk=static.pk %}">{{static.name}}</a></td>
+        <td>
+          {% if static.members.all.count <= 1 %}
+          <span class="label label-success">New</span>
+          {% elif static.members.all.count <= 3 %}
+          <span class="label label-warning">LFM</span>
+          {% else %}
+          <span class="label label-danger">Full</span>
+          {% endif %}
+          <a href="{% url 'static_view' pk=static.pk %}">{{static.name}}</a>
+        </td>
         <td>{{static.description}}</td>
         <td>{{static.leader}}</td>
       </tr

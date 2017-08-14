@@ -2,6 +2,7 @@
 {% block content %}
 <h1 class="text-center">{{static.name}}</h1>
 <h4 class="text-center">{{static.leader}}</h1>
+<p class="text-center">{{static.description}}</p>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <h4>Members</h1>
@@ -18,7 +19,11 @@
         <tr>
           <td>{{character.name}}</td>
           <td>{{character.role}}</td>
-          <td>{{character.discord}}</td>
+          <td>
+            {% if static.leader.user == request.user %}
+            <button onclick="location.href='{% url 'static_remove_member' static.pk character.pk %}'" class="btn btn-danger btn-fill"><i class="pe-7s-delete-user"></i></button>
+            {% endif %}
+          </td>
         </tr
       {% endfor %}
       <!-- Bottom Divider -->
