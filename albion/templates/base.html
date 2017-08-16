@@ -36,7 +36,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="krypted" data-image="{% static "global/img/sidebar.jpg" %}">
+    <div id="krypted_sidebar" class="sidebar" data-color="krypted" data-image="{% static "global/img/sidebar.jpg" %}">
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.kryptedgaming.com" class="simple-text">
@@ -72,7 +72,7 @@
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="krypted_sidebar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -114,6 +114,7 @@
 		<script src="{% static "global/js/bootstrap-notify.min.js" %}"></script>
 
 		<!-- JS-->
+    <script src="{% static "global/js/base.js" %}"></script>
 		<script src=""></script>
         <script>
         {% block extra_script %}
